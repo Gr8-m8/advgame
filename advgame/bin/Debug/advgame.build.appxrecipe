@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>GR8-COM</Machine>
+    <WindowsUser>marti</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>02b4b7aa-0d75-4dfe-bc54-6093aaed6a8a</PackageIdentityName>
+    <PackageIdentityPublisher>CN=marti</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\</IntermediateOutputPath>
+    <RemoteDeploymentType></RemoteDeploymentType>
+    <PackageRegistrationPath></PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath></WindowsSdkPath>
+    <LayoutDir>C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\bin\Debug\AppX</LayoutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\css\main.css">
+      <PackagePath>css\main.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\Camp.png">
+      <PackagePath>images\Camp.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\Dungeon1.png">
+      <PackagePath>images\Dungeon1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\Forest.png">
+      <PackagePath>images\Forest.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\HighMountain.png">
+      <PackagePath>images\HighMountain.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\Mountain.png">
+      <PackagePath>images\Mountain.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\Plane.png">
+      <PackagePath>images\Plane.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\Player.png">
+      <PackagePath>images\Player.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\Water.png">
+      <PackagePath>images\Water.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\images\Void.png">
+      <PackagePath>images\Void.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\index.html">
+      <PackagePath>index.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\js\main.js">
+      <PackagePath>js\main.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\marti\documents\visual studio 2017\Projects\advgame\advgame\bin\Debug\ReverseMap\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

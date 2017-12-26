@@ -1,0 +1,13 @@
+﻿body {
+    background-color:black;
+    overflow:hidden;
+}
+
+.canvas{
+    background-color:blue;
+}
+
+.gameResources{
+    height:0px;
+    overflow:hidden;
+}

@@ -1,0 +1,17 @@
+﻿body {
+    background-color:black;
+    overflow:hidden;
+    text-align:center;
+}
+
+.canvas {
+    background-color: #000066;
+}
+
+.playArea{
+}
+
+.gameResources{
+    height:0px;
+    overflow:hidden;
+}

@@ -1,0 +1,17 @@
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bin\Debug\ReverseMap\resources.pri
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bin\Debug\AppxManifest.xml
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bin\Debug\advgame.build.appxrecipe
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\advgame.jsproj.CoreCompileInputs.cache
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\ResourceHandlingTask.state
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\priconfig.xml
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\priconfig.xml.intermediate
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\layout.resfiles
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\layout.resfiles.intermediate
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\resources.resfiles
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\resources.resfiles.intermediate
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\pri.resfiles
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\pri.resfiles.intermediate
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\qualifiers.txt
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\qualifiers.txt.intermediate
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\MultipleQualifiersPerDimensionFound.txt
+c:\users\marti\documents\visual studio 2017\Projects\advgame\advgame\bld\Debug\ProjectArchitectures.txt
