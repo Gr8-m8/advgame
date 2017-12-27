@@ -2,6 +2,14 @@
 const getX = 0;
 const getY = 1;
 
+function RendWidth() {
+	return window.innerWidth - 15;
+}
+
+function RendHeight() {
+	return window.innerHeight - 15;
+}
+
 Math.clamp = function (num, min, max) {
 	return Math.max(min, Math.min(num, max));
 }
@@ -98,19 +106,29 @@ class Renderer {
 		this.ref;
 		this.draw;
 
-		this.scale = (window.innerHeight - 15) / zoom;
+		this.scale = RendHeight() / zoom;
+		this.textScale = RendHeight() / 15;
 
 		this.rendObj = [];
 	}
 
 	Init() {
 		document.getElementById("play").innerHTML =
-			"<canvas id='" + this.canId + "' class='canvas' width='" + (window.innerWidth - 15) + "' height='" + (window.innerHeight - 15) + "'></canvas>";
+			"<canvas id='" + this.canId + "' class='canvas' width='" + RendWidth() + "' height='" + RendHeight() + "'></canvas>";
 
-		this.scale = (window.innerHeight - 15) / zoom;
+		this.Resize();
 
 		this.ref = document.getElementById(this.canId);
 		this.draw = this.ref.getContext("2d");
+	}
+
+	Resize() {
+		document.getElementById(this.canId).width = RendWidth();
+		document.getElementById(this.canId).height = RendHeight();
+
+		this.textScale = RendHeight() / 15;
+
+		this.scale = RendHeight() / zoom;
 	}
 
 	Box(x, y, clr = "red", wdt = this.scale, hgt = this.scale) {
@@ -129,12 +147,12 @@ class Renderer {
 	}
 
 	Img(x, y, src = "", scaleFactor = 1, offset = 0, wdt = this.scale, hgt = this.scale) {
-		this.draw.drawImage(document.getElementById(src), x * this.scale - gc.players[0].clientRendOffset(getX), y * this.scale - gc.players[0].clientRendOffset(getY), wdt * scaleFactor, hgt * scaleFactor);
+		this.draw.drawImage(document.getElementById(src), x * this.scale - gc.players[0].RendOffsetX(), y * this.scale - gc.players[0].RendOffsetY(), wdt * scaleFactor, hgt * scaleFactor);
 	}
 
 	Text(text, clr, x, y, maxwdt) {
 		this.draw.fillStyle = clr;
-		this.draw.font = "30px Arial";
+		this.draw.font = this.textScale + "px Arial";
 		this.draw.fillText(text, x, y, maxwdt);
 	}
 
@@ -171,6 +189,8 @@ class Map {
 			default:
 			case 0:
 			case "Nobs Valley":
+				this.size = [10, 10];
+
 				this.charmap =
 				"0" + "0" + "m" + "m" + "m" + "m" + "m" + "m" + "0" + "0" +
 
@@ -193,7 +213,6 @@ class Map {
 				"0" + "0" + "0" + "0" + "m" + "m" + "m" + "0" + "0" + "0";
 
 				this.spawnpoint = [2,2];
-				this.size = [10, 10];
 				break;
 		}
 	}
@@ -239,7 +258,9 @@ class Tile extends GameObject {
 		super("tile" + setRendSRC);
 		this.movementPoints = setMovementPoints;
 
-		this.dungeon = new DungeonTile("dungeon");
+		//this.dungeon = new DungeonTile("dungeon");
+
+		//this.dungeon.SetPos(this.pos[getX], this.pos[getY]);
 	}
 
 	Exploring() {
@@ -285,8 +306,6 @@ class Player {
 		this.index = setIndex;
 		this.hero = new Hero();
 
-		this.rendOffset = [this.hero.pos[getX], this.hero.pos[getY]];
-
 		this.Init();
 	}
 
@@ -303,30 +322,33 @@ class Player {
 			this.hero.pos[getY] += y;
 			
 		}
+	}
 
-		this.rendOffset[getX] = -(window.innerWidth  - 15) / 2 + gc.renderer.scale + this.hero.pos[getX] * gc.renderer.scale;
-		this.rendOffset[getY] = -(window.innerHeight - 15) / 2 + gc.renderer.scale + this.hero.pos[getY] * gc.renderer.scale;
+	RendOffsetX() {
+		return -RendWidth() / 2 + gc.renderer.scale + this.hero.pos[getX] * gc.renderer.scale;
+	}
+
+	RendOffsetY() {
+		return -RendHeight() / 2 + gc.renderer.scale + this.hero.pos[getY] * gc.renderer.scale;
 	}
 
 	clientRendOffset(xORy) {
-		//console.log(this.rendOffset[xORy]);
 		return this.rendOffset[xORy];
 	}
 
 	Rend() {
-
 		this.RendStatusBar();
 		this.RendInventory();
 	}
 
 	RendStatusBar() {
-		gc.renderer.Box(5, (window.innerHeight - 15) - 155, "gray", 400, 150);
-		gc.renderer.Text(" HP  : " + this.hero.hp, "black", 10, (window.innerHeight - 15) - 125, 395);
-		gc.renderer.Text("STM: " + this.hero.stamina, "black", 10, (window.innerHeight - 15) - 125 + 35, 395);
+		gc.renderer.Box(5, RendHeight() - 5, "gray", RendWidth() * 0.15, -RendHeight() * 0.15);
+		gc.renderer.Text("HP: " + this.hero.hp, "black", 5 + 5, (RendHeight() - 5) - RendHeight() * 0.15 + gc.renderer.textScale, RendWidth() * 0.15 - 5);
+		gc.renderer.Text("STM: " + this.hero.stamina, "black", 5 + 5, (RendHeight() - 5) - RendHeight() * 0.15 + 2 * gc.renderer.textScale, RendWidth() * 0.15 - 5);
 	}
 
 	RendInventory() {
-		gc.renderer.Box((window.innerWidth - 15) - 50, 150, "gray", 500, (window.innerHeight -15));
+		
 	}
 }
 
@@ -342,11 +364,11 @@ window.onload = function () {
 }
 
 window.onresize = function () {
-	gc.renderer.Init();
+	gc.renderer.Resize();
 }
 
 window.addEventListener("keydown", (event) => {
-	console.log(event.keyCode);
+	//console.log(event.keyCode);
 
 	switch (event.keyCode) {
 		default:
