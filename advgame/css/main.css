@@ -1,14 +1,15 @@
 ﻿body {
-    background-color:black;
-    overflow:hidden;
-    text-align:center;
+    background-color: #000066;
+    overflow: hidden;
+    text-align: center;
 }
 
 .canvas {
-    background-color: #000066;
+    //background-color: #000066;
 }
 
 .playArea{
+    color:white;
 }
 
 .gameResources{
