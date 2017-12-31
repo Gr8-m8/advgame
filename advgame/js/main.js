@@ -195,25 +195,16 @@ class Map {
 				this.size = [10, 10];
 
 				this.charmap =
-				"0" + "0" + "m" + "m" + "m" + "m" + "m" + "m" + "0" + "0" +
-
-				"0" + "m" + "p" + "p" + "f" + "f" + "f" + "f" + "m" + "0" +
-
-				"0" + "m" + "p" + "M" + "M" + "f" + "f" + "f" + "m" + "0" +
-
-				"m" + "f" + "m" + "0" + "M" + "f" + "f" + "f" + "f" + "m" +
-
-				"m" + "f" + "f" + "m" + "f" + "f" + "f" + "p" + "p" + "w" +
-
-				"m" + "f" + "f" + "f" + "f" + "f" + "p" + "p" + "p" + "w" +
-
-				"m" + "f" + "f" + "f" + "f" + "f" + "p" + "p" + "p" + "m" +
-
-				"m" + "p" + "f" + "f" + "f" + "p" + "p" + "p" + "m" + "0" +
-
-				"0" + "m" + "m" + "m" + "p" + "p" + "p" + "m" + "0" + "0" +
-
-				"0" + "0" + "0" + "0" + "m" + "m" + "m" + "0" + "0" + "0";
+					"00mmmmmm00" +
+					"0mppffffm0" +
+					"0mpMMfffm0" +
+					"mfm0Mffffm" +
+					"mffmfffppw" +
+					"mfffffpppw" +
+					"mfffffpppm" +
+					"mpfffpppm0" +
+					"0mmmpppm00" +
+					"0000mmm000";
 
 				this.spawnpoint = [2,2];
 				break;
