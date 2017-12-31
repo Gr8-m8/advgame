@@ -126,8 +126,8 @@ class Renderer {
 		this.scale = RendHeight() / zoom;
 	}
 
-	Img(x, y, src = "", scaleFactor = 1, offset = 0, wdt = this.scale, hgt = this.scale) {
-		this.draw.drawImage(document.getElementById(src), x * this.scale - gc.players[0].RendOffsetX(), y * this.scale - gc.players[0].RendOffsetY(), wdt * scaleFactor, hgt * scaleFactor);
+	Img(x, y, src = "", offsetX = gc.players[0].RendOffsetX(), offsetY = gc.players[0].RendOffsetY(), wdt = this.scale, hgt = this.scale) {
+		this.draw.drawImage(document.getElementById(src), x - offsetX, y - offsetY, wdt, hgt);
 	}
 
 	Box(x, y, clr = "gray", wdt = this.scale, hgt = this.scale) {
@@ -239,7 +239,6 @@ class GameObject {
 	constructor(setRendSRC = "tileMountain") {
 		this.pos = [-1, -1];
 		this.rendSRC = setRendSRC;
-		this.rendScale = 1;
 		this.Init();
 	}
 
@@ -252,7 +251,7 @@ class GameObject {
 	}
 
 	Rend() {
-		gc.renderer.Img(this.pos[getX], this.pos[getY], this.rendSRC, this.rendScale);
+		gc.renderer.Img(this.pos[getX] * gc.renderer.scale, this.pos[getY] * gc.renderer.scale, this.rendSRC);
 	}
 }
 
@@ -262,10 +261,16 @@ class Tile extends GameObject {
 		this.rendAS = setRendSRC;
 		this.movementPoints = setMovementPoints;
 		this.visionPoints = setVisionPoints;
+
+		this.name = setRendSRC;
+		this.isExplored = false;
 	}
 
 	Exploring() {
-		this.rendSRC = "tile" + this.rendAS;
+		if (!this.isExplored) {
+			this.isExplored = true;
+			this.rendSRC = "tile" + this.rendAS;
+		}
 	}
 
 	getMovementPoints() {
@@ -322,6 +327,13 @@ class Hero extends GameObject{
 		this.stamina = 100;
 
 		this.inventory = [];
+		this.Initt();
+	}
+
+	Initt() {
+		for (var i = 0; i < 33; i++) {
+			this.inventory.push(new InventoryItem());
+		}
 	}
 
 	Move(x, y) {
@@ -368,7 +380,7 @@ class Player {
 		}
 
 		//temp
-		this.hero.stamina += 100;
+		//this.hero.stamina += 100;
 	}
 
 	RendOffsetX() {
@@ -403,16 +415,20 @@ class Player {
 		if (this.inventoryIsOpen) {
 			gc.renderer.RoundRect(RendWidth() * 0.15, RendHeight() * 0.15, "gray", RendWidth() * 0.75, RendHeight() * 0.75);
 
+			for (var i = 0; i < this.hero.inventory.length; i++) {
+				gc.renderer.Img(RendWidth() * 0.15 + i * gc.renderer.scale + 15, RendHeight() * 0.15 + 15, this.hero.inventory[i].rendSRC, 0, 0);
+			}
+
 		}
 	}
 }
 
 //INVENTORY====================================
 class InventoryItem {
-	constructor() {
-		this.name = "Item";
-		this.description = "Description";
-		this.rendSRC = "";
+	constructor(setRendSRC = "tileMountain", setName = "Item", setDescription = "Description") {
+		this.name = setName;
+		this.description = setDescription;
+		this.rendSRC = setRendSRC;
 	}
 }
 
@@ -477,4 +493,18 @@ window.addEventListener("keydown", (event) => {
 			gc.players[0].hero.stamina = 999999;
 			break;
 	}
+});
+
+document.getElementById("can").addEventListener("mousemove", (event) => {
+	var mX = Math.clamp(event.clientX - 8, 0, window.innerWidth - 8);
+	var mY = Math.clamp(event.clientY - 8, 0, window.innerHeight - 8);
+
+	var mXtile = Math.clamp(Math.floor((event.clientX + gc.players[0].RendOffsetX()) / gc.renderer.scale), 0, gc.mapmanager.map.getSize(getX) - 1);
+	var mYtile = Math.clamp(Math.floor((event.clientY + gc.players[0].RendOffsetY()) / gc.renderer.scale), 0, gc.mapmanager.map.getSize(getY) - 1);
+
+	//console.log(mX + "!" + mY);
+	if (gc.mapmanager.getTile(mXtile, mYtile).isExplored) {
+		console.log(gc.mapmanager.getTile(mXtile, mYtile).name);
+	}
+
 });

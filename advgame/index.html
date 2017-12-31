@@ -8,8 +8,10 @@
 </head>
 <body>
 
-    <div class="gameResources">
+    <canvas id="can" class="canvas">Your browser does not support the canvas element</canvas>
 
+    <div class="gameResources">
+        TILE
         <img src="images/Forest.png" id="tileForest" />
         <img src="images/HighMountain.png" id="tileHighMountain" />
         <img src="images/Mountain.png" id="tileMountain" />
@@ -17,13 +19,12 @@
         <img src="images/Void.png" id="tileVoid" />
         <img src="images/Water.png" id="tileWater" />
 
+        DUNGEON
         <img src="images/Dungeon1.png" id="dungeon" width="32" height="32" />
         <img src="images/Camp.png" id="dungeonBandit" width="32" height="32" />
-        <img src="images/Player.png" id="plr" width="32" height="32" />
-    </div>
 
-    <div id="play" class="playArea">
-        <canvas id="can" class="canvas">Your browser does not support the canvas element</canvas>
+        PLAYER
+        <img src="images/Player.png" id="plr" width="32" height="32" />
     </div>
 
     <script src="js/main.js"></script>
