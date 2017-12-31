@@ -38,7 +38,7 @@ class GameController {
 class MapMapmanager {
 	constructor() {
 		this.mapLayout = [[]];
-		this.map = new Map();
+		this.map = new WorldMap();
 	}
 
 	Init() {
@@ -180,11 +180,15 @@ class Renderer {
 
 //==========================================================
 
-class Map {
+class WorldMap {
 	constructor() {
 		this.charmap = "";
 		this.spawnpoint = [];
 		this.size = [];
+	}
+
+	SetDungeon() {
+
 	}
 
 	SetMap(indexORname) {
@@ -253,6 +257,9 @@ class Tile extends GameObject {
 		this.movementPoints = setMovementPoints;
 		this.visionPoints = setVisionPoints;
 
+		this.hasDungeon = false;
+		this.dungeon;
+
 		this.name = setRendSRC;
 		this.isExplored = false;
 	}
@@ -261,6 +268,10 @@ class Tile extends GameObject {
 		if (!this.isExplored) {
 			this.isExplored = true;
 			this.rendSRC = "tile" + this.rendAS;
+
+			if (this.hasDungeon) {
+				this.dungeon = new WorldMap();
+			}
 		}
 	}
 
@@ -270,6 +281,10 @@ class Tile extends GameObject {
 
 	getVision() {
 		return this.visionPoints;
+	}
+
+	EnterDungeon() {
+
 	}
 }
 
@@ -372,6 +387,10 @@ class Player {
 
 		//temp
 		//this.hero.stamina += 100;
+	}
+
+	Use() {
+
 	}
 
 	RendOffsetX() {
